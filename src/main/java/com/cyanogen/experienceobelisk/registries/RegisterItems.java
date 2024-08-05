@@ -117,6 +117,17 @@ public class RegisterItems {
                 }
             });
 
+    public static final RegistryObject<Item> COGNITIVE_ROD = ITEMS.register("cognitive_rod",
+            () -> new FishingRodItem(new Item.Properties().defaultDurability(835)){
+                @Override
+                public int getEnchantmentValue() {
+                    return 15;
+                }
+            });
+
+    public static final RegistryObject<Item> COGNITIVE_SHEARS = ITEMS.register("cognitive_shears",
+            () -> new ShearsItem(new Item.Properties().defaultDurability(835)));
+
     public static Multimap<Attribute, AttributeModifier> addRangeAttributeModifier(Multimap<Attribute, AttributeModifier> multimap, EquipmentSlot slot){
 
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
