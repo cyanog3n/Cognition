@@ -28,7 +28,7 @@ public class RegisterCreativeTab {
                         output.accept(RegisterItems.ASTUTE_ASSEMBLY.get());
                         output.accept(RegisterItems.PRIMORDIAL_ASSEMBLY.get());
 
-                        //TOOLSETS
+                        //TOOLSETS & ARMOR
                         output.accept(RegisterItems.COGNITIVE_SWORD.get());
                         output.accept(RegisterItems.COGNITIVE_SHOVEL.get());
                         output.accept(RegisterItems.COGNITIVE_PICKAXE.get());
@@ -36,6 +36,10 @@ public class RegisterCreativeTab {
                         output.accept(RegisterItems.COGNITIVE_HOE.get());
                         output.accept(RegisterItems.COGNITIVE_ROD.get());
                         output.accept(RegisterItems.COGNITIVE_SHEARS.get());
+                        output.accept(RegisterItems.COGNITIVE_HELMET.get());
+                        output.accept(RegisterItems.COGNITIVE_CHESTPLATE.get());
+                        output.accept(RegisterItems.COGNITIVE_LEGGINGS.get());
+                        output.accept(RegisterItems.COGNITIVE_BOOTS.get());
 
                         //FUNCTIONAL ITEMS
                         output.accept(RegisterItems.ATTUNEMENT_STAFF.get());
