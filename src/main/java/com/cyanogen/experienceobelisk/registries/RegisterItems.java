@@ -173,6 +173,12 @@ public class RegisterItems {
     public static final RegistryObject<Item> EXPERIENCE_JELLY = ITEMS.register("experience_jelly",
             () -> new ExperienceJellyItem(new Item.Properties()));
 
+    public static final RegistryObject<Item> MENDING_NEUROGEL = ITEMS.register("mending_neurogel",
+            () -> new MendingNeurogelItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> REGENERATING_NEUROGEL = ITEMS.register("regenerating_neurogel",
+            () -> new RegeneratingNeurogelItem(new Item.Properties()));
+
     //-----FUNCTIONAL BLOCK ITEMS-----//
 
     public static final RegistryObject<Item> EXPERIENCE_OBELISK_ITEM = ITEMS.register("experience_obelisk",
