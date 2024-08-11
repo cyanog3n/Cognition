@@ -15,17 +15,17 @@ public class RegeneratingNeurogelItem extends Item {
         super(p);
     }
 
-    public static void handleFortification(ItemStackedOnOtherEvent event){
+    public static void handleItem(ItemStackedOnOtherEvent event){
         ItemStack carried = event.getCarriedItem();
         ItemStack stackedOn = event.getStackedOnItem();
+        CompoundTag tag = stackedOn.getOrCreateTag();
 
-        if(carried.is(RegisterItems.REGENERATING_NEUROGEL.get()) && stackedOn.isDamageableItem()){
+        if(carried.is(RegisterItems.REGENERATING_NEUROGEL.get()) && stackedOn.isDamageableItem() && tag.getInt("ReserveDurability") <= 1600){
             carried.shrink(1);
-            CompoundTag tag = stackedOn.getOrCreateTag();
 
             if(tag.contains("ReserveDurability")){
-                int regen = tag.getInt("ReserveDurability");
-                tag.putInt("ReserveDurability", Math.min(200 + regen, 1600));
+                int reserveDurability = tag.getInt("ReserveDurability");
+                tag.putInt("ReserveDurability", Math.min(200 + reserveDurability, 1600));
             }
             else{
                 tag.putInt("ReserveDurability", 200);
@@ -41,15 +41,15 @@ public class RegeneratingNeurogelItem extends Item {
         InteractionHand hand = event.getHand();
 
         if(tag.contains("ReserveDurability")){
-            int regen = tag.getInt("ReserveDurability");
+            int reserveDurability = tag.getInt("ReserveDurability");
             int maxDamage = item.getMaxDamage();
-            int restore = Math.min(maxDamage, regen);
+            int restore = Math.min(maxDamage, reserveDurability);
 
-            if(regen - restore <= 0){
+            if(reserveDurability - restore <= 0){
                 tag.remove("ReserveDurability");
             }
             else{
-                tag.putInt("ReserveDurability", regen - restore);
+                tag.putInt("ReserveDurability", reserveDurability - restore);
             }
 
             item.setDamageValue(maxDamage - restore);

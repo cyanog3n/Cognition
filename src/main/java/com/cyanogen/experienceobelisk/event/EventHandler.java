@@ -19,8 +19,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public void onItemStackedOnOther(ItemStackedOnOtherEvent event){
-        MendingNeurogelItem.handleRepair(event);
-        RegeneratingNeurogelItem.handleFortification(event);
+        MendingNeurogelItem.handleItem(event);
+        RegeneratingNeurogelItem.handleItem(event);
     }
 
     @SubscribeEvent

@@ -11,7 +11,7 @@ public class MendingNeurogelItem extends Item {
         super(p);
     }
 
-    public static void handleRepair(ItemStackedOnOtherEvent event){
+    public static void handleItem(ItemStackedOnOtherEvent event){
         ItemStack carried = event.getCarriedItem();
         ItemStack stackedOn = event.getStackedOnItem();
 
