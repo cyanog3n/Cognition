@@ -176,8 +176,8 @@ public class RegisterItems {
     public static final RegistryObject<Item> MENDING_NEUROGEL = ITEMS.register("mending_neurogel",
             () -> new MendingNeurogelItem(new Item.Properties()));
 
-    public static final RegistryObject<Item> REGENERATING_NEUROGEL = ITEMS.register("regenerating_neurogel",
-            () -> new RegeneratingNeurogelItem(new Item.Properties()));
+    public static final RegistryObject<Item> RESURRECTING_NEUROGEL = ITEMS.register("resurrecting_neurogel",
+            () -> new ResurrectingNeurogel(new Item.Properties()));
 
     //-----FUNCTIONAL BLOCK ITEMS-----//
 

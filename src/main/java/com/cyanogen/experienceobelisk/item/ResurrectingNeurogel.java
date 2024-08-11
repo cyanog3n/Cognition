@@ -1,17 +1,22 @@
 package com.cyanogen.experienceobelisk.item;
 
 import com.cyanogen.experienceobelisk.registries.RegisterItems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.ItemStackedOnOtherEvent;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 
-public class RegeneratingNeurogelItem extends Item {
+import java.util.List;
 
-    public RegeneratingNeurogelItem(Properties p) {
+public class ResurrectingNeurogel extends Item {
+
+    public ResurrectingNeurogel(Properties p) {
         super(p);
     }
 
@@ -20,7 +25,7 @@ public class RegeneratingNeurogelItem extends Item {
         ItemStack stackedOn = event.getStackedOnItem();
         CompoundTag tag = stackedOn.getOrCreateTag();
 
-        if(carried.is(RegisterItems.REGENERATING_NEUROGEL.get()) && stackedOn.isDamageableItem() && tag.getInt("ReserveDurability") <= 1600){
+        if(carried.is(RegisterItems.RESURRECTING_NEUROGEL.get()) && stackedOn.isDamageableItem() && tag.getInt("ReserveDurability") <= 1600){
             carried.shrink(1);
 
             if(tag.contains("ReserveDurability")){
@@ -60,6 +65,21 @@ public class RegeneratingNeurogelItem extends Item {
             else if(!player.addItem(item)){
                 player.drop(item, false);
             }
+
+        }
+    }
+
+    public static void handleTooltip(ItemTooltipEvent event){
+
+        ItemStack item = event.getItemStack();
+        CompoundTag tag = item.getOrCreateTag();
+        List<Component> tooltip = event.getToolTip();
+
+        if(tag.contains("ReserveDurability")){
+
+            int reserveDurability = tag.getInt("ReserveDurability");
+            tooltip.add(Component.translatable("tooltip.experienceobelisk.resurrecting_nanogel.reserve_durability",
+                    Component.literal(String.valueOf(reserveDurability) + " / 1600").withStyle(ChatFormatting.GREEN)));
 
         }
     }

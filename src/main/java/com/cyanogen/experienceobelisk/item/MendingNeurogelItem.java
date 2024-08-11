@@ -24,5 +24,7 @@ public class MendingNeurogelItem extends Item {
 
 
 
+    //Repairs items by 200 durability points when applied
+    //Can be applied to items you wouldn't be able to otherwise mend, such as those with conflicting enchants, or those that don't accept mending
 
 }
