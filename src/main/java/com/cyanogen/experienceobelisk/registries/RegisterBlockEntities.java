@@ -5,6 +5,7 @@ import com.cyanogen.experienceobelisk.block_entities.*;
 import com.cyanogen.experienceobelisk.block_entities.bibliophage.InfectedArchiversBookshelfEntity;
 import com.cyanogen.experienceobelisk.block_entities.bibliophage.InfectedBookshelfEntity;
 import com.cyanogen.experienceobelisk.block_entities.bibliophage.InfectedEnchantedBookshelfEntity;
+import com.cyanogen.experienceobelisk.block_entities.bibliophage.NutrientAgarEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -43,6 +44,9 @@ public class RegisterBlockEntities {
 
     public static final RegistryObject<BlockEntityType<MolecularMetamorpherEntity>> MOLECULAR_METAMORPHER_BE = BLOCK_ENTITIES.register("molecularmetamorpher_be",
             ()-> BlockEntityType.Builder.of(MolecularMetamorpherEntity::new, RegisterBlocks.MOLECULAR_METAMORPHER.get()).build(Type));
+
+    public static final RegistryObject<BlockEntityType<NutrientAgarEntity>> NUTRIENT_AGAR_BE = BLOCK_ENTITIES.register("nutrientagar_be",
+            ()-> BlockEntityType.Builder.of(NutrientAgarEntity::new, RegisterBlocks.NUTRIENT_AGAR.get()).build(Type));
 
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);

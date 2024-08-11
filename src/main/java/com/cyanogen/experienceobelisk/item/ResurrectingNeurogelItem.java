@@ -14,9 +14,9 @@ import net.minecraftforge.event.entity.player.PlayerDestroyItemEvent;
 
 import java.util.List;
 
-public class ResurrectingNeurogel extends Item {
+public class ResurrectingNeurogelItem extends Item {
 
-    public ResurrectingNeurogel(Properties p) {
+    public ResurrectingNeurogelItem(Properties p) {
         super(p);
     }
 

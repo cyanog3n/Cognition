@@ -11,24 +11,17 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.ExperienceOrb;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static com.cyanogen.experienceobelisk.item.BibliophageItem.getValidBlocksForInfection;
-import static com.cyanogen.experienceobelisk.item.BibliophageItem.infectBlock;
-
-public abstract class AbstractInfectedBookshelfEntity extends BlockEntity {
+public abstract class AbstractInfectedBookshelfEntity extends AbstractInfectiveEntity {
 
     public AbstractInfectedBookshelfEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -76,34 +69,14 @@ public abstract class AbstractInfectedBookshelfEntity extends BlockEntity {
 
     }
 
-    public void infectAdjacent(Level level, BlockPos pos){
-
-        Map<BlockPos, Block> adjacentMap = new HashMap<>();
-        List<BlockPos> posList = new ArrayList<>();
-
-        if(!level.isClientSide){
-            for(BlockPos adjacentPos : getAdjacents(pos)){
-                if(getValidBlocksForInfection().contains(level.getBlockState(adjacentPos).getBlock())){
-
-                    Block adjacentBlock = level.getBlockState(adjacentPos).getBlock();
-                    adjacentMap.put(adjacentPos, adjacentBlock);
-                    posList.add(adjacentPos);
-                }
-            }
-        }
-
-        if(!adjacentMap.isEmpty()){
-
-            int index = (int) Math.floor(Math.random() * posList.size());
-            BlockPos posToInfect = posList.get(index);
-            Block block = adjacentMap.get(posToInfect);
-
-            infectBlock(level, posToInfect, block);
-        }
-    }
-
     public void resetSpawnDelay(){
-        this.timeTillSpawn = (int) (spawnDelayMin + Math.floor((spawnDelayMax - spawnDelayMin) * Math.random()));
+        int delay = (int) (spawnDelayMin + Math.floor((spawnDelayMax - spawnDelayMin) * Math.random()));
+
+        if(isAdjacentTo(RegisterBlocks.INSIGHTFUL_AGAR.get())){
+            delay = (int) (delay * 0.8);
+        }
+
+        this.timeTillSpawn = delay;
         this.setChanged();
     }
 
@@ -112,11 +85,28 @@ public abstract class AbstractInfectedBookshelfEntity extends BlockEntity {
         this.setChanged();
     }
 
+    public boolean isAdjacentTo(Block block){
+        Level level = getLevel();
+        BlockPos pos = getBlockPos();
+
+        for(BlockPos adjacent : getAdjacents(pos)){
+            if(level != null && level.getBlockState(adjacent).is(block)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void handleExperience(Level level, BlockPos pos){
 
         int value = orbValue;
 
         if(!level.isClientSide){
+
+            if(isAdjacentTo(RegisterBlocks.EXTRAVAGANT_AGAR.get())){
+                value = (int) (value * 1.25);
+            }
+
             ServerLevel server = (ServerLevel) level;
             ExperienceOrb orb = new ExperienceOrb(server, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, value);
             orb.setDeltaMovement(0,0,0);
@@ -144,39 +134,6 @@ public abstract class AbstractInfectedBookshelfEntity extends BlockEntity {
 
         this.setRemoved();
         level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-    }
-
-    public List<BlockPos> getAdjacents(BlockPos pos){
-        List<BlockPos> list = new ArrayList<>();
-        list.add(pos.above());
-        list.add(pos.below());
-        list.add(pos.north());
-        list.add(pos.south());
-        list.add(pos.east());
-        list.add(pos.west());
-
-        return list;
-    }
-
-    public List<BlockState> getAdjacentBlockStates(Level level, BlockPos pos){
-        List<BlockState> list = new ArrayList<>();
-        for(BlockPos adjacent : getAdjacents(pos)){
-            list.add(level.getBlockState(adjacent));
-        }
-
-        return list;
-    }
-
-    public int enumerateAdjacentsOfType(Level level, BlockPos pos, BlockState state){
-
-        int count = 0;
-
-        for(BlockState adjacent : getAdjacentBlockStates(level, pos)){
-            if(adjacent.equals(state)){
-                count++;
-            }
-        }
-        return count;
     }
 
     public boolean toggleActivity(){

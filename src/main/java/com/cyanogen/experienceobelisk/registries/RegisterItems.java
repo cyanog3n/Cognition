@@ -177,7 +177,7 @@ public class RegisterItems {
             () -> new MendingNeurogelItem(new Item.Properties()));
 
     public static final RegistryObject<Item> RESURRECTING_NEUROGEL = ITEMS.register("resurrecting_neurogel",
-            () -> new ResurrectingNeurogel(new Item.Properties()));
+            () -> new ResurrectingNeurogelItem(new Item.Properties()));
 
     //-----FUNCTIONAL BLOCK ITEMS-----//
 
