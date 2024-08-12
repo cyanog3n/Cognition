@@ -15,10 +15,10 @@ public class MendingNeurogelItem extends Item {
         ItemStack carried = event.getCarriedItem();
         ItemStack stackedOn = event.getStackedOnItem();
 
-        if(carried.is(RegisterItems.MENDING_NEUROGEL.get()) && stackedOn.isDamaged()){
-            carried.shrink(1);
+        if(stackedOn.is(RegisterItems.MENDING_NEUROGEL.get()) && carried.isDamaged()){
+            stackedOn.shrink(1);
             int damage = stackedOn.getDamageValue();
-            stackedOn.setDamageValue(Math.max(damage - 200, 0));
+            carried.setDamageValue(Math.max(damage - 200, 0));
         }
     }
 

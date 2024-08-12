@@ -45,6 +45,8 @@ public class RegisterCreativeTab {
                         output.accept(RegisterItems.ATTUNEMENT_STAFF.get());
                         output.accept(RegisterItems.ENLIGHTENED_AMULET.get());
                         output.accept(RegisterItems.BIBLIOPHAGE.get());
+                        output.accept(RegisterItems.MENDING_NEUROGEL.get());
+                        output.accept(RegisterItems.RESURRECTING_NEUROGEL.get());
 
                         //FUNCTIONAL BLOCKS
                         output.accept(RegisterItems.EXPERIENCE_OBELISK_ITEM.get());
@@ -58,6 +60,9 @@ public class RegisterCreativeTab {
                         output.accept(RegisterItems.INFECTED_BOOKSHELF_ITEM.get());
                         output.accept(RegisterItems.INFECTED_ARCHIVERS_BOOKSHELF_ITEM.get());
                         output.accept(RegisterItems.INFECTED_ENCHANTED_BOOKSHELF_ITEM.get());
+                        output.accept(RegisterItems.NUTRIENT_AGAR_ITEM.get());
+                        output.accept(RegisterItems.INSIGHTFUL_AGAR_ITEM.get());
+                        output.accept(RegisterItems.EXTRAVAGANT_AGAR_ITEM.get());
 
                         //DECORATIVE / OTHER BLOCKS
                         output.accept(RegisterItems.COGNITIVE_ALLOY_BLOCK_ITEM.get());

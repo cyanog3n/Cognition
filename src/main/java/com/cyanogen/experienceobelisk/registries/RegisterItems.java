@@ -214,6 +214,15 @@ public class RegisterItems {
     public static final RegistryObject<Item> INFECTED_ARCHIVERS_BOOKSHELF_ITEM = ITEMS.register("infected_archivers_bookshelf",
             () -> new BlockItem(RegisterBlocks.INFECTED_ARCHIVERS_BOOKSHELF.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> NUTRIENT_AGAR_ITEM = ITEMS.register("nutrient_agar",
+            () -> new BlockItem(RegisterBlocks.NUTRIENT_AGAR.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> INSIGHTFUL_AGAR_ITEM = ITEMS.register("insightful_agar",
+            () -> new BlockItem(RegisterBlocks.INSIGHTFUL_AGAR.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> EXTRAVAGANT_AGAR_ITEM = ITEMS.register("extravagant_agar",
+            () -> new BlockItem(RegisterBlocks.EXTRAVAGANT_AGAR.get(), new Item.Properties()));
+
     //-----BLOCK ITEMS-----//
 
     public static final RegistryObject<Item> COGNITIVE_ALLOY_BLOCK_ITEM = ITEMS.register("cognitive_alloy_block",
