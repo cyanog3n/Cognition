@@ -12,17 +12,15 @@ public class MendingNeurogelItem extends Item {
     }
 
     public static void handleItem(ItemStackedOnOtherEvent event){
-        ItemStack carried = event.getCarriedItem();
+        ItemStack itemToRepair = event.getCarriedItem();
         ItemStack stackedOn = event.getStackedOnItem();
 
-        if(stackedOn.is(RegisterItems.MENDING_NEUROGEL.get()) && carried.isDamaged()){
+        if(stackedOn.is(RegisterItems.MENDING_NEUROGEL.get()) && itemToRepair.isDamaged()){
+            int damage = itemToRepair.getDamageValue();
             stackedOn.shrink(1);
-            int damage = stackedOn.getDamageValue();
-            carried.setDamageValue(Math.max(damage - 200, 0));
+            itemToRepair.setDamageValue(Math.max(damage - 200, 0));
         }
     }
-
-
 
     //Repairs items by 200 durability points when applied
     //Can be applied to items you wouldn't be able to otherwise mend, such as those with conflicting enchants, or those that don't accept mending
