@@ -47,6 +47,8 @@ public class RegisterCreativeTab {
                         output.accept(RegisterItems.BIBLIOPHAGE.get());
                         output.accept(RegisterItems.MENDING_NEUROGEL.get());
                         output.accept(RegisterItems.RESURRECTING_NEUROGEL.get());
+                        output.accept(RegisterItems.BOTTOMLESS_BOTTLE.get());
+                        output.accept(RegisterItems.HADEAN_BOTTLE.get());
 
                         //FUNCTIONAL BLOCKS
                         output.accept(RegisterItems.EXPERIENCE_OBELISK_ITEM.get());

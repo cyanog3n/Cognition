@@ -179,6 +179,12 @@ public class RegisterItems {
     public static final RegistryObject<Item> RESURRECTING_NEUROGEL = ITEMS.register("resurrecting_neurogel",
             () -> new ResurrectingNeurogelItem(new Item.Properties()));
 
+    public static final RegistryObject<Item> BOTTOMLESS_BOTTLE = ITEMS.register("bottomless_bottle",
+            () -> new BottomlessBottleItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> HADEAN_BOTTLE = ITEMS.register("hadean_bottle",
+            () -> new HadeanBottleItem(new Item.Properties()));
+
     //-----FUNCTIONAL BLOCK ITEMS-----//
 
     public static final RegistryObject<Item> EXPERIENCE_OBELISK_ITEM = ITEMS.register("experience_obelisk",
