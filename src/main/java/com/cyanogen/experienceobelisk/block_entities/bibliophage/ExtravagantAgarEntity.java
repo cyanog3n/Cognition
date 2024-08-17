@@ -4,10 +4,10 @@ import com.cyanogen.experienceobelisk.registries.RegisterBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class NutrientAgarEntity extends AbstractAgarEntity {
+public class ExtravagantAgarEntity extends AbstractInfectiveEntity {
 
-    public NutrientAgarEntity(BlockPos pos, BlockState state) {
-        super(RegisterBlockEntities.NUTRIENT_AGAR_BE.get(), pos, state);
+    public ExtravagantAgarEntity(BlockPos pos, BlockState state) {
+        super(RegisterBlockEntities.EXTRAVAGANT_AGAR_BE.get(), pos, state);
     }
 
 }

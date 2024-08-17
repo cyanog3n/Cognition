@@ -1,5 +1,6 @@
 package com.cyanogen.experienceobelisk.block.bibliophage;
 
+import com.cyanogen.experienceobelisk.block_entities.bibliophage.ExtravagantAgarEntity;
 import com.cyanogen.experienceobelisk.block_entities.bibliophage.NutrientAgarEntity;
 import com.cyanogen.experienceobelisk.registries.RegisterBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -13,22 +14,22 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class NutrientAgarBlock extends HalfTransparentBlock implements EntityBlock {
+public class ExtravagantAgarBlock extends HalfTransparentBlock implements EntityBlock {
 
-    public NutrientAgarBlock() {
+    public ExtravagantAgarBlock() {
         super(Properties.copy(Blocks.SLIME_BLOCK)
                 .noOcclusion()
                 .isViewBlocking((state,getter,pos)->false));
     }
 
-    private final BlockEntityType<?> type = RegisterBlockEntities.NUTRIENT_AGAR_BE.get();
+    private final BlockEntityType<?> type = RegisterBlockEntities.EXTRAVAGANT_AGAR_BE.get();
 
     //-----BLOCK ENTITY-----//
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return blockEntityType == type ? NutrientAgarEntity::tick : null;
+        return blockEntityType == type ? ExtravagantAgarEntity::tick : null;
     }
 
     @Nullable
