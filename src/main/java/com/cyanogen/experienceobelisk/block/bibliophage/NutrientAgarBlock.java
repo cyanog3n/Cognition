@@ -21,19 +21,17 @@ public class NutrientAgarBlock extends HalfTransparentBlock implements EntityBlo
                 .isViewBlocking((state,getter,pos)->false));
     }
 
-    private final BlockEntityType<?> type = RegisterBlockEntities.NUTRIENT_AGAR_BE.get();
-
     //-----BLOCK ENTITY-----//
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return blockEntityType == type ? NutrientAgarEntity::tick : null;
+        return blockEntityType == RegisterBlockEntities.NUTRIENT_AGAR_BE.get() ? NutrientAgarEntity::tick : null;
     }
 
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return type.create(pos, state);
+        return RegisterBlockEntities.NUTRIENT_AGAR_BE.get().create(pos, state);
     }
 }

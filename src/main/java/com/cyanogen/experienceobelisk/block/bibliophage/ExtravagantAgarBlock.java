@@ -22,19 +22,17 @@ public class ExtravagantAgarBlock extends HalfTransparentBlock implements Entity
                 .isViewBlocking((state,getter,pos)->false));
     }
 
-    private final BlockEntityType<?> type = RegisterBlockEntities.EXTRAVAGANT_AGAR_BE.get();
-
     //-----BLOCK ENTITY-----//
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return blockEntityType == type ? ExtravagantAgarEntity::tick : null;
+        return blockEntityType == RegisterBlockEntities.EXTRAVAGANT_AGAR_BE.get() ? ExtravagantAgarEntity::tick : null;
     }
 
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return type.create(pos, state);
+        return RegisterBlockEntities.EXTRAVAGANT_AGAR_BE.get().create(pos, state);
     }
 }
