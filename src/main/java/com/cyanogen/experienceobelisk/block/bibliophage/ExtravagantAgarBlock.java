@@ -19,9 +19,9 @@ public class ExtravagantAgarBlock extends HalfTransparentBlock implements Entity
     public ExtravagantAgarBlock() {
         super(Properties.copy(Blocks.SLIME_BLOCK)
                 .noOcclusion()
+                .isViewBlocking((state,getter,pos)->false)
                 .lightLevel(value -> 1)
-                .emissiveRendering((state,getter,pos)->true)
-                .isViewBlocking((state,getter,pos)->false));
+                .emissiveRendering((state,getter,pos)->true));
     }
 
     //-----BLOCK ENTITY-----//

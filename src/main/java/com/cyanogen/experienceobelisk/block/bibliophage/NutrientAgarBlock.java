@@ -18,7 +18,9 @@ public class NutrientAgarBlock extends HalfTransparentBlock implements EntityBlo
     public NutrientAgarBlock() {
         super(Properties.copy(Blocks.SLIME_BLOCK)
                 .noOcclusion()
-                .isViewBlocking((state,getter,pos)->false));
+                .isViewBlocking((state,getter,pos)->false)
+                .lightLevel(value -> 1)
+                .emissiveRendering((state,getter,pos)->true));
     }
 
     //-----BLOCK ENTITY-----//

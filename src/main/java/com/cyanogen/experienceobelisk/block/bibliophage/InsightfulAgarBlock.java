@@ -19,8 +19,9 @@ public class InsightfulAgarBlock extends HalfTransparentBlock implements EntityB
     public InsightfulAgarBlock() {
         super(Properties.copy(Blocks.SLIME_BLOCK)
                 .noOcclusion()
-                .emissiveRendering((state,getter,pos)->true)
-                .isViewBlocking((state,getter,pos)->false));
+                .isViewBlocking((state,getter,pos)->false)
+                .lightLevel(value -> 1)
+                .emissiveRendering((state,getter,pos)->true));
     }
 
     //-----BLOCK ENTITY-----//
